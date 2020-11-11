@@ -2217,13 +2217,6 @@ static int pt_blk_proceed_no_event_cached(struct pt_block_decoder *decoder,
 		 */
 		block->iclass = ptic_unknown;
 
-		/* If we end the block on calls and jumps, however, we do know
-		 * that this is not a branch instruction.
-		 */
-		if (decoder->flags.variant.block.end_on_call &&
-		    decoder->flags.variant.block.end_on_jump)
-			block->iclass = ptic_other;
-
 		return pt_blk_proceed_no_event_cached(decoder, block, bcache,
 						      msec);
 
